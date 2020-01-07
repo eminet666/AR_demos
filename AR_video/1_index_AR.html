@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8">
+      <title>Video</title>
+      <meta name="description" content="Video - A-Frame">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+      <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+      <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
+      <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  </head>
+
+  <body>
+
+    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled: false;'>
+
+      <a-assets>
+          <video id="videoParis" src="zorba.mp4"
+                 preload="auto" width="160" height="90" autoplay loop="true"
+                 crossOrigin="anonymous">
+          </video>
+          <video id="videoHypercube" src="29280579.mp4"
+                 preload="auto" width="160" height="90" autoplay loop="true"
+                 crossOrigin="anonymous">
+          </video>
+      </a-assets>
+
+<a-marker preset="hiro">
+      <!--
+      SOURCE
+      Title:  Paris Sunset - Timelapse (Public Domain)
+      Author: Mythomen <https://vimeo.com/mythomen>
+      URL:    https://vimeo.com/147309712
+      -->
+      <a-entity material="shader: flat; src: #videoParis"
+                geometry="primitive: plane; width: 32; height: 18;"
+                position="1 0 0"
+                rotation="0 35 0"
+                scale= "0.1 0.1 0.1"
+                loaded>
+      </a-entity>
+
+      <!--
+      SOURCE
+      Title:  Hypercube Study
+      Author: Dan Allison <https://vimeo.com/danallison>
+      URL:    https://vimeo.com/5081158
+      -->
+      <a-entity material="shader: flat; src: #videoHypercube"
+                geometry="primitive: plane; width: 32; height: 18"
+                position="1 0 0"
+                rotation="0 -35 0"
+                scale= "0.1 0.1 0.1"
+                loaded>
+      </a-entity>
+
+    </a-marker>
+
+        <a-entity camera>
+            <a-cursor color="red"></a-cursor>
+        </a-entity>
+    </a-scene>
+
+    <button id="bouton" style="position: absolute; left: 20px; bottom: 20px;">PLAY</button>
+
+    <script>
+        var b = document.querySelector('#bouton');
+        var video1 = document.querySelector('#videoParis');
+        var video2 = document.querySelector('#videoHypercube');
+
+        function resumeVideo() {
+            console.log("button clicked");
+                  video1.play();
+                  video2.play();
+        }
+        b.onclick = resumeVideo;
+
+      </script>
+
+  </body>
+</html>

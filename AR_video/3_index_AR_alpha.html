@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8">
+      <title>Video</title>
+      <meta name="description" content="Video - A-Frame">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+      <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+      <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
+      <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+      <script src="unlock_audio_ios.js"></script>
+
+      <script>
+          window.addEventListener('camera-init', (data) => {
+              console.log('camera-init', data);
+          })
+          window.addEventListener('camera-error', (error) => {
+              console.log('camera-error', error);
+          })
+        AFRAME.registerComponent('registerevents', {
+          init: function () {
+            var marker = this.el;
+            var video1 = document.querySelector('#vid1');
+            marker.addEventListener('markerFound', function() {
+              var markerId = marker.id;
+              console.log('markerFound', markerId);
+              // TODO: Add your own code here to react to the marker being found.
+              video1.play();
+            });
+            marker.addEventListener('markerLost', function() {
+              var markerId = marker.id;
+              console.log('markerLost', markerId);
+              // TODO: Add your own code here to react to the marker being lost.
+              video1.pause();
+            });
+          }
+        });
+
+        </script>
+
+
+  </head>
+
+  <body>
+
+    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled: false;'>
+
+        <a-assets>
+            <video id="vid1" src="alpha_video.webm"
+                   preload="auto" width="360" height="360" autoplay loop="true"
+                   crossOrigin="anonymous">
+            </video>
+        </a-assets>
+
+        <a-marker preset="hiro" id='marker-hiro' registerevents>
+
+        <a-entity material="shader: flat; src: #vid1"
+                  geometry="primitive: plane; width: 18; height: 18;"
+                  position="0 0 0"
+                  rotation="0 0 0"
+                  scale= "0.2 0.2 0.2">
+        </a-entity>
+
+      </a-marker>
+
+        <a-entity camera>
+            <a-cursor color="red"></a-cursor>
+        </a-entity>
+    </a-scene>
+
+    <!--
+    <button id="bouton" style="position: absolute; left: 20px; bottom: 20px;">SON ON</button>
+
+    <script>
+        var b = document.querySelector('#bouton');
+        var video1 = document.querySelector('#vid1');
+        var video2 = document.querySelector('#vid2');
+
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        var contexteAudio = new AudioContext;
+
+        unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
+
+        function resumeAudio() {
+            console.log(contexteAudio.state);
+
+            if(contexteAudio.state == "suspended")
+            {
+                  contexteAudio.resume();
+                  console.log('Playback resumed successfully');
+                  video1.play();
+                  video2.play();
+                  video1.muted = false;
+                  b.innerHTML = "SON OFF";
+                  console.log("SON OFF");
+            }
+            else {
+                  contexteAudio.suspend();
+                  console.log('Playback paused successfully');
+                  video1.muted = true;
+                  b.innerHTML = "SON ON";
+                  console.log("SON ON");
+            }
+            //document.removeEventListener("click", resumeAudio);
+        }
+        b.onclick = resumeAudio;
+
+      </script>
+    -->
+  </body>
+</html>
