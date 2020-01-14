@@ -13,7 +13,8 @@
 
   <body style='margin : 0px; overflow: hidden;'>
 
-		<a-scene embedded arjs='trackingMethod: best;debugUIEnabled: false; patternRatio: 0.75'>
+		<!-- <a-scene embedded arjs='trackingMethod: best;debugUIEnabled: false; patternRatio: 0.75'> -->
+		<a-scene embedded arjs='trackingMethod: best;debugUIEnabled: false;'>
 				<a-assets>
 					<img id="img1" src="./images/image1.jpg">
 					<img id="img2" src="./images/image2.jpg">
@@ -24,49 +25,33 @@
 					<img id="img7" src="./images/image7.jpg">
 				</a-assets>
 
-				<a-marker type="pattern" url="./patterns/pattern-anne.patt">
-						<a-entity>
+				<a-marker preset="hiro">
 								<a-plane position="0 1 0" src="#img1" height="2" width="2" rotation="-45 0 0"></a-plane>
-						</a-entity>
 				</a-marker>
 
-				<a-marker type="pattern" url="./patterns/pattern-archi.patt">
-						<a-entity>
+				<a-marker type="pattern" url="./patterns/pattern-letterA.patt">
 								<a-plane position="0 1 0" src="#img2" height="2" width="2" rotation="-45 0 0"></a-plane>
-						</a-entity>
 				</a-marker>
 
-				<a-marker type="pattern" url="./patterns/pattern-cheval.patt">
-						<a-entity>
+				<a-marker type="pattern" url="./patterns/pattern-letterB.patt">
 								<a-plane position="0 1 0" src="#img3" height="2" width="2" rotation="-45 0 0"></a-plane>
-						</a-entity>
 				</a-marker>
 
-				<a-marker type="pattern" url="./patterns/pattern-femme.patt">
-						<a-entity>
+				<a-marker type="pattern" url="./patterns/pattern-letterC.patt">
 								<a-plane position="0 1 0" src="#img4" height="2" width="2" rotation="-45 0 0"></a-plane>
-						</a-entity>
 				</a-marker>
 
-
-				<a-marker type="pattern" url="./patterns/pattern-leda.patt">
-						<a-entity>
+				<a-marker type="pattern" url="./patterns/pattern-letterD.patt">
 								<a-plane position="0 1 0" src="#img5" height="2" width="2" rotation="-45 0 0"></a-plane>
-						</a-entity>
 				</a-marker>
 
-				<a-marker type="pattern" url="./patterns/pattern-vinci.patt">
-						<a-entity>
+				<a-marker type="pattern" url="./patterns/pattern-letterF.patt">
 								<a-plane position="0 1 0" src="#img6" height="2" width="2" rotation="-45 0 0"></a-plane>
-						</a-entity>
 				</a-marker>
 
-				<a-marker type="pattern" url="./patterns/pattern-visages.patt">
-						<a-entity>
+				<a-marker type="pattern" url="./patterns/pattern-letterG.patt">
 								<a-plane position="0 1 0" src="#img7" height="2" width="2" rotation="-45 0 0"></a-plane>
-						</a-entity>
 				</a-marker>
-
 
 				<a-entity camera></a-entity>
     </a-scene>
@@ -80,17 +65,8 @@
 			// patternRatio : [default] / 0.75 / 0.90 selon l'épaisseur du contour du marker généré
 
 			<a-marker preset="hiro">
+			<a-marker preset="kanji">
 
-			<a-marker type="pattern" url="./patterns/pattern-Etienne.patt"> 						ok
-			<a-marker type="pattern" url="./patterns/pattern-Etienne_thin.patt"> 				ok
-			<a-marker type="pattern" url="./patterns/pattern-Etienne_thinest.patt"> 		ok
-			<a-marker type="pattern" url="./patterns/pattern-Etienne_blue.patt"> 				ok
-			<a-marker type="pattern" url="./patterns/pattern-Etienne_borderblue.patt"> 	ok
+			<a-marker type="pattern" url="./patterns/pattern-xxxx.patt">
 
-			<a-marker type="pattern" url="./patterns/pattern-EtienneBW.patt">		ok
-			<a-marker type="pattern" url="./patterns/pattern-flag.patt"> 				ok
-			<a-marker type="pattern" url="./patterns/pattern-guepe.patt"> 			ok
-			<a-marker type="pattern" url="./patterns/pattern-guepe.patt"> 			ok
-			<a-marker type="pattern" url="./patterns/pattern-pericles.patt"> 		detection difficile
-			<a-marker type="pattern" url="./patterns/pattern-homere.patt"> 			ok
 		-->
