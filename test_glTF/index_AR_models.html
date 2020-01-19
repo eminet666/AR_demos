@@ -27,14 +27,17 @@
 
   <body style='margin : 0px; overflow: hidden;'>
 
-		<a-scene embedded arjs='trackingMethod: best;debugUIEnabled: false; '>
+		<a-scene embedded
+						 arjs='trackingMethod: best;debugUIEnabled: false; '
+						 gltf-model="dracoDecoderPath: ./draco/;">
 
 			<a-assets>
-				<a-asset-item id="glbModel" src="./models/libellule_marche2.glb"></a-asset-item>
+				<a-asset-item id="glbModel" src="./models/Libellule.glb"></a-asset-item>
 			</a-assets>
 
 			<a-marker preset="hiro">
-					<a-entity   id ="modele"
+
+					<a-entity   id ="insecte"
 											scale="0.5 0.5 0.5"
 											position="0 0 0"
 											rotation="0 0 0"
@@ -42,6 +45,7 @@
 											animation-mixer
 											gltf-model="#glbModel">
 					 </a-entity>
+
 			</a-marker>
 
 				<a-entity camera></a-entity>
