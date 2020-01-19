@@ -1,51 +1,59 @@
-AR_demos
-multi-markers
-test glTF
+#test glTF
 
-0_ vérifiez le principe en choisissant dans le menu du fichier index.html :
+# 0_ vérifiez le principe en choisissant dans le menu du fichier index.html :
 
     test glTF models (AR) = permet de tester un fichier .glb en AR avec un marker HIRO
     test glTF models (VR) = permet de tester un fichier .glb en VR (sans marker donc) La démo marche avec le fichier le fichier de Milène (Libellule.glb)
 
-1_ exportez votre modèle 3D avec son animation en glTF
+# 1_ exportez votre modèle 3D avec son animation en glTF
 
-Dans le réfpertoire glTF : 2_ placez votre fichier .glb dans le repertoire 'models'
+Dans le réfpertoire glTF :
+# 2_ placez votre fichier .glb dans le repertoire 'models'
 
-TEST VR (plus facile de commencer par cela et suffisant pour tester la qualité de l'export) 3_ modifier le fichier 'index_VR_models.html' en modifiant le nom du fichier .glb dans le paramètre src= de la balise
+TEST VR (plus facile de commencer par cela et suffisant pour tester la qualité de l'export)
+# 3_ modifier le fichier 'index_VR_models.html' en modifiant le nom du fichier .glb dans le paramètre src= de la balise
 
-TEST AR 3_ modifier le fichier 'index_AR_models.html' en modifiant le nom du fichier .glb dans le paramètre src= de la balise
+TEST AR
+# 3_ modifier le fichier 'index_AR_models.html' en modifiant le nom du fichier .glb dans le paramètre src= de la balise
 
 Vérifiez (et si ce n'est pas le cas, faites quelques tests pour essayer de résoudre le problème)
 
-    que votre modèle apparait
-    que l'animation est visible
-    que les textures sont bien rendues
+    - que votre modèle apparait
+    - que l'animation est visible
+    - que les textures sont bien rendues
 
-4_ vous pouvez ensuite :
+# 4_ vous pouvez ensuite :
 
-    ajuster les paramètres scale, position et rotation pour positionner votre insecte (en VR, l'origine est au niveau de l'objectif de la caméra, c'est pourquoi le modèle en reculé en z (profondeur)) (en AR, l'origine est au centre du marker)
+    - ajuster les paramètres scale, position et rotation pour positionner votre insecte
+    (en VR, l'origine est au niveau de l'objectif de la caméra, c'est pourquoi le modèle en reculé en z (profondeur))
+    (en AR, l'origine est au centre du marker)
 
-    multiplier votre insecte en copiant la structure en modifiant la place de chacun avec le parmètre position.
+    - multiplier votre insecte en copiant la structure en modifiant la place de chacun avec le parmètre position.
 
-5_ optimisez le poids du fichier glb (plus il est léger plus le programme est rapide) Etape-1 : envisagez de smodification de votre modélisation à partir du paragraphe "Optimizing Complex Models" de la page https://aframe.io/docs/0.9.0/introduction/models.html#optimizing-complex-models
+# 5_ optimisez le poids du fichier glb (plus il est léger plus le programme est rapide)
 
-Nous ferons la suite ensemble Etape-2 : activez l'option de compression de l'export dans blender (dans la rubrique "geometry") Etape-3 : utilisez la compression draco
+- Etape-1 : envisagez des modification de votre modélisation à partir du paragraphe "Optimizing Complex Models" de la page https://aframe.io/docs/0.9.0/introduction/models.html#optimizing-complex-models
 
-https://aframe.io/docs/0.9.0/components/gltf-model.html#geometry-compression-with-draco https://github.com/AnalyticalGraphicsInc/gltf-pipeline
+Nous ferons la suite ensemble
+- Etape-2 : activez l'option de compression de l'export dans blender (dans la rubrique "geometry")
+
+- Etape-3 : utilisez la compression draco
+https://aframe.io/docs/0.9.0/components/gltf-model.html#geometry-compression-with-draco
+https://github.com/AnalyticalGraphicsInc/gltf-pipeline
 
 Préparation des fichiers, tapez les commandes dans un terminal : (remplacer model par le nom de votre fichier)
 
-    installation : npm install -g gltf-pipeline
-    glb2gltf : gltf-pipeline -i model.glb -o model.gltf
-    gltf2dracogltf : gltf-pipeline -i model.gltf -o modelDraco.gltf -d
+    * installation : npm install -g gltf-pipeline
+    * glb2gltf : gltf-pipeline -i model.glb -o model.gltf
+    * gltf2dracogltf : gltf-pipeline -i model.gltf -o modelDraco.gltf -d
 
 Installation :
 
-    les fichiers de la librairie draco doivent être disponible dans un répertoire (ici ./draco)
-    ajouter un paramètre pour draco dans la balise scene :
+    * les fichiers de la librairie draco doivent être disponible dans un répertoire (ici ./draco)
+    * ajouter un paramètre pour draco dans la balise scene : <a-scene gltf-model="dracoDecoderPath: ./draco/;">
 
 Utilisation :
 
-    remplacer le fichier model.glb par le modelDraco.gltf qui vient d'être créé
+    - remplacer le fichier model.glb par le modelDraco.gltf qui vient d'être créé
 
 exemple : Libellule.glb = 6,6Mo / LibelluleDraco.gltf = 2,4Mo
